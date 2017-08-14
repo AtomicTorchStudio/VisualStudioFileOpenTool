@@ -33,7 +33,7 @@
 
             // More than one VS instance is active.
             // Check each one and find which one contains the file and return it.
-            // If multiple solutions has this file, prefer one with the less projects count.
+            // If multiple solutions has this file, prefer one with the fewer projects count.
             foundDte = null;
             var foundDteProjectsCount = int.MaxValue;
 
@@ -92,7 +92,7 @@
                         + Environment.NewLine
                         + "Finds an VS instance containing a solution with the specified file to open it at the specified line."
                         + Environment.NewLine
-                        + "If there are multiple VS instances, prefer one with the less projects count."
+                        + "If there are multiple VS instances, prefer one with the fewer projects count."
                         + Environment.NewLine
                         + "Otherwise runs a new VS instance with this file as an argument."
                         + Environment.NewLine
