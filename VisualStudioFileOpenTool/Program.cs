@@ -4,6 +4,7 @@
 
     using System;
     using System.Diagnostics;
+    using System.IO;
     using System.Linq;
     using System.Runtime.InteropServices;
     using System.Windows.Forms;
@@ -45,8 +46,7 @@
                     var foundProjectItem = instance.Solution.FindProjectItem(filePath);
                     if (foundProjectItem != null)
                     {
-#if DEBUG
-                        // log all solution projects
+#if DEBUG // log all solution projects
                         foreach (var proj in instance.Solution.GetAllProjects())
                         {
                             Debug.WriteLine("Project: " + proj.Name);
@@ -104,7 +104,9 @@
                 }
 
                 var filePath = args[0];
-                int.TryParse(args[1], out int fileline);
+                filePath = filePath.Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
+
+                int.TryParse(args[1], out var fileline);
 
                 if (!FindInstance(out var foundDte, filePath))
                 {
